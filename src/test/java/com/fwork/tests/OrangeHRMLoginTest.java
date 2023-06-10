@@ -1,18 +1,10 @@
 package com.fwork.tests;
 
 
-import com.fwork.driver.DriverManager;
-import com.fwork.pages.OrangeHRMHomePage;
 import com.fwork.pages.OrangeHRMLoginPage;
 import org.assertj.core.api.Assertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.util.List;
-import java.util.Objects;
 
 public final class OrangeHRMLoginTest extends BaseTest {
 
@@ -20,12 +12,12 @@ public final class OrangeHRMLoginTest extends BaseTest {
 
     }
 
-    @Test
-    public void loginLogoutTest() throws InterruptedException {
+    @Test(dataProvider = "LoginTestDataProvider")
+    public void loginLogoutTest(String username, String password)  {
 
         String title = new OrangeHRMLoginPage()
-                .enterUsename("Admin")
-                .enterPassword("admin123")
+                .enterUsename(username)
+                .enterPassword(password)
                 .clickSubmit()
                 .clickLinkPaul()
                 .clickLinkLogout()
@@ -34,7 +26,15 @@ public final class OrangeHRMLoginTest extends BaseTest {
         Assertions.assertThat(title)
                 .isEqualTo("OrangeHRM");
 
+    }
 
+    @DataProvider(name="LoginTestDataProvider", parallel = true)
+    public Object[][] getData() {
+
+        return new Object[][] {
+                {"Admin", "admin123"},
+                {"Admin123", "admin1234"}
+        };
 
     }
 }

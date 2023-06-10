@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Practice Suite">
-    <test thread-count="1" name="Test Basics 1" parallel="methods">
+<suite name="Practice Suite" data-provider-thread-count="3">
+    <test thread-count="2" name="Test Basics 1" parallel="methods">
         <parameter name="emailid" value="tester456@gmail.com"/>
         <parameter name="password" value="test@123"/>
         <classes>
