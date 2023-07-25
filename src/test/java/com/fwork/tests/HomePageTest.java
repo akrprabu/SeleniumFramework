@@ -6,9 +6,12 @@ import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Objects;
 
@@ -45,4 +48,13 @@ public final class HomePageTest extends BaseTest {
                 .contains("testing mini");
 
     }
+    @Test
+    public void test4() {
+        final By field = By.name("q");
+        WebElement element = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(10))
+                .until(ExpectedConditions.elementToBeClickable(field));
+       element.sendKeys("test");
+    }
+
+
 }
