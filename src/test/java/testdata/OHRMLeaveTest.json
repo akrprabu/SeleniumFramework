@@ -1,0 +1,7 @@
+{
+  "addLeavesForAnEmployee" : [
+    { "Name": "Lisa Andrews", "Leave Type" :  "US - Personal",  "Entitlement" :  "4" },
+    { "Name": "Nina Patel", "Leave Type": "US - Vacation", "Entitlement": "4" }
+  ]
+
+}
