@@ -1,8 +1,10 @@
 package com.fwork.tests;
 
 import com.fwork.driver.Driver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.ITestContext;
+import org.testng.annotations.*;
+
+import java.util.Objects;
 
 public class BaseTest {
 
@@ -10,9 +12,20 @@ public class BaseTest {
 
     }
 
+    @BeforeTest
+    protected void beforeTest(ITestContext context) {
+        context.setAttribute("classname", this.getClass().getSimpleName()); //This is to use in data provider
+    }
+    @Parameters({"browser"})
     @BeforeMethod
-    protected void setUp() throws Exception {
-        Driver.initdriver();
+    protected void setUp(@Optional("chrome") String browserName) throws Exception {
+        if (Objects.isNull(System.getProperty("browser"))) {
+            Driver.initdriver(browserName.toLowerCase());
+        } else {
+            Driver.initdriver(System.getProperty("browserName").toLowerCase());
+        }
+
+
     }
 
     @AfterMethod

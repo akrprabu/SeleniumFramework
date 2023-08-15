@@ -22,16 +22,16 @@ public final class OrangeHRMLoginPage extends BasePage{
         AllureReport.saveTextLog("Enter password on the field " + textboxPassword);
         return this;
     }
-
+    public String getTitle() {
+        return getPageTitle();
+    }
     public OrangeHRMHomePage clickSubmit() {
         click(buttonSubmit, WaitStrategy.CLICKABLE);
         AllureReport.saveTextLog("Click on submit button " + buttonSubmit);
         return new OrangeHRMHomePage();
     }
 
-    public String getTitle() {
-        return getPageTitle();
-    }
+
 
 
 
