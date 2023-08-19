@@ -1,19 +1,14 @@
 package com.fwork.tests;
 
 import com.fwork.driver.DriverManager;
-import com.fwork.enums.WaitStrategy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.devtools.idealized.Javascript;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -38,7 +33,7 @@ public class ParasoftTest extends BaseTest{
 //        DriverManager.getDriver().quit();
 //    }
     @Test
-    public void paraSoftTest() throws InterruptedException {
+    public void paraSoftTest()  {
 
 
         final By accountTable = By.id("accountTable");
@@ -56,10 +51,10 @@ public class ParasoftTest extends BaseTest{
         element(adminPageMenu).click();
         boolean isPageReady = ((JavascriptExecutor)DriverManager.getDriver()).executeScript("return document.readyState").equals("complete");
         Assert.assertTrue(isPageReady);
-        Thread.sleep(10000);
+
         JavascriptExecutor jse = (JavascriptExecutor)DriverManager.getDriver();
         jse.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        Thread.sleep(10000);
+
         selectDropDownValue("Local");
 
     }
@@ -117,6 +112,8 @@ public class ParasoftTest extends BaseTest{
             if(w.getText().equalsIgnoreCase(value)) {
                 w.click();
                 break;
+            } else {
+                throw new RuntimeException(value + " does not exists in the drop down, please check");
             }
         }
     }

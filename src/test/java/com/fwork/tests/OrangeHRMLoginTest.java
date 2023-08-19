@@ -1,7 +1,7 @@
 package com.fwork.tests;
 
 
-import com.fwork.pages.OrangeHRMLoginPage;
+import com.fwork.pages.OHRMLoginPage;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,7 +15,7 @@ public final class OrangeHRMLoginTest extends BaseTest {
     @Test(dataProvider = "LoginTestDataProvider")
     public void loginLogoutTest(String username, String password)  {
 
-        String title = new OrangeHRMLoginPage()
+        String title = new OHRMLoginPage()
                 .enterUsename(username)
                 .enterPassword(password)
                 .clickSubmit()

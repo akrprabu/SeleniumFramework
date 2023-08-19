@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 import java.util.concurrent.TimeUnit;
 
-public class OrangeHRMLeavePage extends BasePage {
+public class OHRMLeavePage extends BasePage {
 
     private final By buttonApproveLeave = By.xpath("(//div[@class='orangehrm-container']//div[@role='cell' and normalize-space()='Aaliyah Haq'])[1]/parent::div//button[normalize-space()='Approve']");
 
@@ -20,42 +20,42 @@ public class OrangeHRMLeavePage extends BasePage {
     public String getLeaveText() {
         return getText(textLeave, WaitStrategy.PRESENCE);
     }
-    public OrangeHRMLeavePage clickButtonApproveLeave() {
+    public OHRMLeavePage clickButtonApproveLeave() {
         click(buttonApproveLeave, WaitStrategy.CLICKABLE);
         Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
         AllureReport.saveTextLog("Click on Approve Leave button");
-        return new OrangeHRMLeavePage();
+        return new OHRMLeavePage();
 
     }
 
 
     private String xpathBefore = "(//div[@class='orangehrm-container']//div[@role='cell' and normalize-space()='%replacable%'])[1]/parent::div//button[normalize-space()='Approve']";
-    public OrangeHRMLeavePage clickButtonApproveLeaveBasedOnText(String name) {
+    public OHRMLeavePage clickButtonApproveLeaveBasedOnText(String name) {
         String newXpath = DynamicPathUtils.getXpath(xpathBefore,name);
         click(By.xpath(newXpath), WaitStrategy.PRESENCE);
         AllureReport.saveTextLog("Click on Approve Leave for " + name);
-        return new OrangeHRMLeavePage();
+        return new OHRMLeavePage();
     }
 
-    public OrangeHRMLeavePage clickSubUnitDrpoDown() {
+    public OHRMLeavePage clickSubUnitDrpoDown() {
         click(subUnitDropDown, WaitStrategy.CLICKABLE);
         Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
-        return new OrangeHRMLeavePage();
+        return new OHRMLeavePage();
 
     }
 
     private String subUnitText = "//label[text()='Sub Unit']/parent::div/following-sibling::div//span[text()='%replacable%']";
-    public OrangeHRMLeavePage clickSubUnitText(String text) throws InterruptedException {
+    public OHRMLeavePage clickSubUnitText(String text) throws InterruptedException {
         String newXpath = DynamicPathUtils.getXpath(subUnitText,text);
         click(By.xpath(newXpath), WaitStrategy.PRESENCE);
         AllureReport.saveTextLog("Selected " + text + "from Sub Unit drop down" + subUnitText);
         Thread.sleep(4000);
-        return new OrangeHRMLeavePage();
+        return new OHRMLeavePage();
     }
 
-    public OrangeHRMLeavePage selectValueFromSubUnit(String visibleText) throws InterruptedException {
+    public OHRMLeavePage selectValueFromSubUnit(String visibleText) {
         selectAValueFromDropdown(subUnitDropDown, WaitStrategy.PRESENCE, visibleText);
-        return new OrangeHRMLeavePage();
+        return new OHRMLeavePage();
     }
 
     public boolean checkTextSuccessExists() {

@@ -1,7 +1,8 @@
 package com.fwork.driver;
 
+import com.fwork.enums.ConfigProperties;
 import com.fwork.factories.BrowserFactory;
-import com.fwork.utils.ReadPropertyFile;
+import com.fwork.utils.ReadPropertyFileUtils;
 import java.net.MalformedURLException;
 import java.util.Objects;
 
@@ -30,7 +31,7 @@ public final class Driver {
             }
             //DriverManager.getDriver().get(PropertyUtils.get(ConfigProperties.URL));
 
-            DriverManager.getDriver().get(ReadPropertyFile.getValue("url"));
+            DriverManager.getDriver().get(ReadPropertyFileUtils.getValue(ConfigProperties.URL));
             //DriverManager.getDriver().manage().window().maximize();
         }
 

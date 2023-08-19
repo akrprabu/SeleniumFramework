@@ -1,5 +1,7 @@
 package com.fwork.utils;
 
+import com.fwork.enums.ConfigProperties;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,11 +12,11 @@ import java.util.Properties;
  * @author Prabu Komaravel
  * @version 1.0
  */
-public final class ReadPropertyFile {
+public final class ReadPropertyFileUtils {
 
-    private ReadPropertyFile() {}
+    private ReadPropertyFileUtils() {}
 
-    private static Properties property = new Properties();
+    private static final Properties property = new Properties();
     private static String env = System.getProperty("env");
 
 
@@ -32,23 +34,21 @@ public final class ReadPropertyFile {
             * If it is not a static block then, we can add like getClass().getClassLoader()....
             */
 
-           InputStream inputStream = ReadPropertyFile.class.getClassLoader().getResourceAsStream(file);
+           InputStream inputStream = ReadPropertyFileUtils.class.getClassLoader().getResourceAsStream(file);
 
             property.load(inputStream);
-        }
-        catch(FileNotFoundException e) {
+
+        } catch(IOException e) {
             e.printStackTrace();
         }
-        catch(IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
-    public static String getValue(String key) throws Exception {
+    public static String getValue(ConfigProperties key)  {
 
-        if(Objects.isNull(property.getProperty(key)) || Objects.isNull(key)){ //or value == null
-            throw new Exception("Property name " + key + " is not found. Please check config.properties file");
+        if(Objects.isNull(property.getProperty(String.valueOf(key))) || Objects.isNull(key)){ //or value == null
+            throw new RuntimeException("Property name " + key + " is not found. Please check config.properties file");
         }
-        return property.getProperty(key);
+        return property.getProperty(String.valueOf(key));
     }
 }

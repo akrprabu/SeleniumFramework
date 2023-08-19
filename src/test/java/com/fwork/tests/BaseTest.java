@@ -1,10 +1,12 @@
 package com.fwork.tests;
 
 import com.fwork.driver.Driver;
+import com.google.common.util.concurrent.Uninterruptibles;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
@@ -19,10 +21,12 @@ public class BaseTest {
     @Parameters({"browser"})
     @BeforeMethod
     protected void setUp(@Optional("chrome") String browserName) throws Exception {
+
         if (Objects.isNull(System.getProperty("browser"))) {
             Driver.initdriver(browserName.toLowerCase());
         } else {
-            Driver.initdriver(System.getProperty("browserName").toLowerCase());
+
+            Driver.initdriver(System.getProperty("browser").toLowerCase());
         }
 
 
@@ -30,6 +34,7 @@ public class BaseTest {
 
     @AfterMethod
     protected void tearDown() {
+        Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
         Driver.quitDriver();
 
     }

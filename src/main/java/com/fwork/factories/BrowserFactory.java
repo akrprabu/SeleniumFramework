@@ -1,6 +1,7 @@
 package com.fwork.factories;
 
-import com.fwork.utils.ReadPropertyFile;
+import com.fwork.enums.ConfigProperties;
+import com.fwork.utils.ReadPropertyFileUtils;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -33,7 +34,7 @@ public final class BrowserFactory {
 
         String runmode = null;
         try {
-            runmode = ReadPropertyFile.getValue("runmode");
+            runmode = ReadPropertyFileUtils.getValue(ConfigProperties.RUNMODE);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -43,7 +44,7 @@ public final class BrowserFactory {
         WebDriver driver = null;
 
         if(browser.equalsIgnoreCase("chrome")) {
-            if(runmode.equalsIgnoreCase("remote")) {
+            if(runmode.equalsIgnoreCase(runmode)) {
                 options = new ChromeOptions();
                 options.setCapability("browserName", "chrome");
                 driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
@@ -53,7 +54,8 @@ public final class BrowserFactory {
             }
 
         } else if (browser.equalsIgnoreCase("firefox")) {
-            if(runmode.equalsIgnoreCase("remote")) {
+            System.out.println("Inside firfox factory");
+            if(runmode.equalsIgnoreCase(runmode)) {
                 options = new FirefoxOptions();
                 options.setCapability("browserName", "firefox");
                 driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
@@ -61,7 +63,7 @@ public final class BrowserFactory {
                 driver = new FirefoxDriver();
             }
         } else if (browser.equalsIgnoreCase("edge")) {
-            if(runmode.equalsIgnoreCase("remote")) {
+            if(runmode.equalsIgnoreCase(runmode)) {
                 options = new EdgeOptions();
                 options.setCapability("browserName", "MicrosoftEdge");
                 driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
