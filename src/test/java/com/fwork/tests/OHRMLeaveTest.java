@@ -83,7 +83,7 @@ public final class OHRMLeaveTest extends BaseTest {
                 .setEmployeeName(hashMap.get("Name"))
                 .clickAjaxName()
                 .selectLeaveType(hashMap.get("Leave Type"))
-                .setEntitlement("Entitlement")
+                .setEntitlement(hashMap.get("Entitlement"))
                 .clickOnSave()
                 .clickConfirm()
                 .checkAddedTextExists();
