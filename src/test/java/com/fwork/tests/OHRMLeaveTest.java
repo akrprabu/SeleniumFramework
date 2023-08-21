@@ -11,15 +11,19 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 
 public final class OHRMLeaveTest extends BaseTest {
 
-    @Test(dataProvider = "dp1")
-    public void oraangeHRMLeaveTest(String name)  {
+    @Test
+    public void oraangeHRMLeaveTest()  {
 
-        System.out.println(name);
+        //System.out.println(name);
+
+        System.out.println("Inside test");
     }
 
     @DataProvider(name="dp1")
