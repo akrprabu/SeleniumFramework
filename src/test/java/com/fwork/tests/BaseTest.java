@@ -47,12 +47,16 @@ public class BaseTest {
     protected void tearDown() {
         Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
         Driver.quitDriver();
+
+
+    }
+    @AfterTest
+    protected void afterClass() {
         try {
             Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"cd C:\\Users\\akrpr\\Docker Workspace && docker-compose down\"");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
 }
