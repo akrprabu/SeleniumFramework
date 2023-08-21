@@ -21,7 +21,7 @@ public class BaseTest {
         context.setAttribute("classname", this.getClass().getSimpleName()); //This is to use in data provider
 
         //This is to start docker hub and browser containers
-        String[] command = {"cd C:\\Users\\akrpr\\Docker Workspace>", "docker-compose up -d"};
+        String[] command = {"cd C:\\Users\\akrpr\\Docker Workspace", "docker-compose up -d"};
         ProcessBuilder builder = new ProcessBuilder(command);
         builder = builder.directory(new File("C:\\Users\\akrpr\\Docker Workspace"));
         try {
