@@ -54,6 +54,7 @@ public class BaseTest {
     protected void afterClass() {
         try {
             Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"cd C:\\Users\\akrpr\\Docker Workspace && docker-compose down\"");
+            Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"cd C:\\Users\\akrpr\\IdeaProjects\\SeleniumFramework && allure serve\"");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
