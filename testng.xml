@@ -12,12 +12,12 @@
         <classes>
             <class name="com.fwork.tests.OHRMLeaveTest">
              <methods>
-                 <include name="oraangeHRMLeaveTest" />
+                 <include name="addLeavesForAnEmployee" />
                  <exclude name="approveLeaveTest" />
              </methods>
              </class>
               <class name="com.fwork.tests.ParasoftTest">
-     </class>
+              </class>
   </classes>
 </test> <!-- Test -->
 
