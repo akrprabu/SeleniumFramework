@@ -44,18 +44,18 @@ public final class BrowserFactory {
         WebDriver driver = null;
 
         if(browser.equalsIgnoreCase("chrome")) {
-            if(runmode.equalsIgnoreCase(runmode)) {
+            if(runmode.equalsIgnoreCase("remote")) {
                 options = new ChromeOptions();
                 options.setCapability("browserName", "chrome");
                 driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
 
             } else {
-                driver = new ChromeDriver();
+               driver = new ChromeDriver();
             }
 
         } else if (browser.equalsIgnoreCase("firefox")) {
-            System.out.println("Inside firfox factory");
-            if(runmode.equalsIgnoreCase(runmode)) {
+
+            if(runmode.equalsIgnoreCase("remote")) {
                 options = new FirefoxOptions();
                 options.setCapability("browserName", "firefox");
                 driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
@@ -63,7 +63,7 @@ public final class BrowserFactory {
                 driver = new FirefoxDriver();
             }
         } else if (browser.equalsIgnoreCase("edge")) {
-            if(runmode.equalsIgnoreCase(runmode)) {
+            if(runmode.equalsIgnoreCase("remote")) {
                 options = new EdgeOptions();
                 options.setCapability("browserName", "MicrosoftEdge");
                 driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);

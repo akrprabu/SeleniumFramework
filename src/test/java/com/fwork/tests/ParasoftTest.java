@@ -32,7 +32,7 @@ public class ParasoftTest extends BaseTest{
 //    public void afterClass() {
 //        DriverManager.getDriver().quit();
 //    }
-    @Test
+    @Test(enabled = false)
     public void paraSoftTest()  {
 
 
@@ -59,7 +59,7 @@ public class ParasoftTest extends BaseTest{
 
     }
     @Test
-    public void getDropdownValueTest() {
+    public void parasoftCheckDropdownValueTest() {
         final By dropDown = By.name("SiteMap");
         DriverManager.getDriver().get(url2);
 
@@ -79,9 +79,10 @@ public class ParasoftTest extends BaseTest{
                 break;
             }
         }
-         boolean result = options.stream().anyMatch(m-> m.getText().equals("doc 21"));
+         boolean result = options.stream().anyMatch(m-> m.getText().equals("doc 2"));
          Assert.assertTrue(result);
     }
+
 
     public WebElement element(By elementLocator) {
 

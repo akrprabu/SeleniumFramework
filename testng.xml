@@ -8,14 +8,17 @@
     <test thread-count="2" name="Test Basics 1" parallel="methods">
         <parameter name="emailid" value="tester456@gmail.com"/>
         <parameter name="password" value="test@123"/>
-        <parameter name="browser" value="chrome"/>
+        <parameter name="browser" value="firefox"/>
         <classes>
             <class name="com.fwork.tests.OHRMLeaveTest">
-            <methods>
-                <include name="addLeavesForAnEmployee" />
-            </methods>
-            </class>
-         </classes>
-    </test> <!-- Test -->
+             <methods>
+                 <include name="oraangeHRMLeaveTest" />
+                 <include name="approveLeaveTest" />
+             </methods>
+             </class>
+              <class name="com.fwork.tests.ParasoftTest">
+     </class>
+  </classes>
+</test> <!-- Test -->
 
 </suite> <!-- Suite -->

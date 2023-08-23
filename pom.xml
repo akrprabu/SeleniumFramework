@@ -55,10 +55,11 @@
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-java</artifactId>
-                <version>4.8.3</version>
-            </dependency>
+                <!-- <version>4.8.3</version>  -->
+                 <version>4.11.0</version>
+             </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+<!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>

@@ -6,6 +6,7 @@ import com.fwork.pages.OHRMLeaveEntitlementPage;
 import com.fwork.pages.OHRMLeavePage;
 import com.fwork.pages.OHRMLoginPage;
 import com.fwork.utils.DataUtils;
+import com.google.common.util.concurrent.Uninterruptibles;
 import org.assertj.core.api.Assertions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -13,6 +14,7 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.HashMap;
 
 
@@ -54,9 +56,9 @@ public final class OHRMLeaveTest extends BaseTest {
                 .isEqualTo("Leave");
 
         boolean flag = new OHRMLeavePage()
-                .clickSubUnitDrpoDown()
-                .clickSubUnitText("Engineering")
-                .clickButtonApproveLeaveBasedOnText("Anthony Nolan")
+                //.clickSubUnitDrpoDown()
+                //.clickSubUnitText("Engineering")
+                .clickButtonApproveLeaveBasedOnText("Pending Approval (1.50)")
                 .checkTextSuccessExists();
 
         Assertions.assertThat(flag).isTrue();
