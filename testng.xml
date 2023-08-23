@@ -12,7 +12,8 @@
         <classes>
             <class name="com.fwork.tests.OHRMLeaveTest">
              <methods>
-                <include name="approveLeaveTest" />
+                 <include name="oraangeHRMLeaveTest" />
+                 <exclude name="approveLeaveTest" />
              </methods>
              </class>
               <class name="com.fwork.tests.ParasoftTest">
