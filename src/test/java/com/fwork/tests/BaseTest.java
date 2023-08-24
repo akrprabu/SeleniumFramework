@@ -31,7 +31,7 @@ public class BaseTest {
         //This is to start docker hub and browser containers
         if(runmode.equalsIgnoreCase("remote")) {
             try {
-                Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"cd C:\\Users\\akrpr\\Docker Workspace && docker-compose up -d --scale chrome=4 firfox=4\"");
+                Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"cd C:\\Users\\akrpr\\Docker Workspace && docker-compose up -d --scale chrome=4 firefox=4\"");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
