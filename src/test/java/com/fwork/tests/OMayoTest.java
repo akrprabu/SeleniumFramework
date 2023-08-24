@@ -13,9 +13,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -131,7 +129,7 @@ public class OMayoTest extends BaseTest {
 
 
         List<Integer> ageListAfterSort = ageList.stream().sorted().collect(Collectors.toList());
-
+        List<Integer> list = Arrays.asList(5,6,7,8);
         SoftAssertions softly = new SoftAssertions();
 
             softly.assertThat(ageListAfterSort)
@@ -140,6 +138,10 @@ public class OMayoTest extends BaseTest {
                     .contains(25)
                     .isNotEmpty()
                     .isNotNull();
-            softly.assertAll();
+        softly.assertThat(Collections.min(list)).isEqualTo(6);
+            softly.assertThat(list)
+                            .isEmpty();
+
+                softly.assertAll();
     }
 }

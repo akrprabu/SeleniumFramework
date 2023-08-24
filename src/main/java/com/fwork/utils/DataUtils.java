@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class DataUtils {
 
-    @DataProvider(name="getDataFromJson")
+    @DataProvider(name="getDataFromJson", parallel = true)
     public Object[] getData(Method m, ITestContext context) {
 
         System.out.println("Class name: " +context.getAttribute("classname"));
@@ -53,8 +53,7 @@ public class DataUtils {
             e.printStackTrace();
             return null;
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+             e.printStackTrace();
             return null;
         }
 
