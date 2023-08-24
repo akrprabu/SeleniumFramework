@@ -32,6 +32,7 @@ public class BaseTest {
         if(runmode.equalsIgnoreCase("remote")) {
             try {
                 Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"cd C:\\Users\\akrpr\\Docker Workspace && docker-compose up -d --scale chrome=4 --scale firefox=4\"");
+                //Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"cd C:\\Users\\akrpr\\Docker Workspace && docker-compose up -d docker-compose.yml up --scale chrome=4\"");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
