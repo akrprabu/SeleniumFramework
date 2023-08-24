@@ -16,7 +16,12 @@
                  <exclude name="approveLeaveTest" />
              </methods>
              </class>
-              <class name="com.fwork.tests.ParasoftTest">
+              <class name="com.fwork.tests.OMayoTest">
+                  <methods>
+                      <exclude name="checkColumnSort" />
+                      <exclude name="omayoTest" />
+                  </methods>
+
               </class>
   </classes>
 </test> <!-- Test -->

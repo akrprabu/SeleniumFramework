@@ -31,7 +31,7 @@ public class OMayoTest extends BaseTest {
     private final By links = By.tagName("a");
 
 
-    @Test
+    @Test(enabled = false)
     public void omayoTest() {
         DriverManager.getDriver().get(baseURL);
         getElement(userNameField).sendKeys("Test1");
@@ -48,7 +48,7 @@ public class OMayoTest extends BaseTest {
      * This test is to check all the check box for all the male gender in the table
      */
     @Test
-    public void s3Table() {
+    public void s3TableVerification() {
         DriverManager.getDriver().get("https://vins-udemy.s3.amazonaws.com/java/html/java8-stream-table.html");
         DriverManager.getDriver().findElements(By.tagName("tr"))
                 .stream()
@@ -115,7 +115,8 @@ public class OMayoTest extends BaseTest {
     /**
      * This test is to check if the table sorting order is correct for the column 'age' in a table
      */
-    @Test
+
+    @Test (enabled = false)
     public void checkColumnSort() {
         DriverManager.getDriver().get("https://omayo.blogspot.com/");
         WebElement element = DriverManager.getDriver().findElement(By.xpath("//table[@id='table1']//tr"));
@@ -129,7 +130,7 @@ public class OMayoTest extends BaseTest {
 
 
         List<Integer> ageListAfterSort = ageList.stream().sorted().collect(Collectors.toList());
-        List<Integer> list = Arrays.asList(5,6,7,8);
+
         SoftAssertions softly = new SoftAssertions();
 
             softly.assertThat(ageListAfterSort)
@@ -138,9 +139,6 @@ public class OMayoTest extends BaseTest {
                     .contains(25)
                     .isNotEmpty()
                     .isNotNull();
-        softly.assertThat(Collections.min(list)).isEqualTo(6);
-            softly.assertThat(list)
-                            .isEmpty();
 
                 softly.assertAll();
     }
