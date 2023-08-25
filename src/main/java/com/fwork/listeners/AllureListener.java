@@ -15,11 +15,14 @@ public class AllureListener implements ITestListener, ISuiteListener {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
     }
     @Attachment
-    public byte[] saveFailureScreenshot(WebDriver driver) {
+    public byte[] saveScreenshot(WebDriver driver) {
         return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
     }
 
-
+    @Attachment
+    public byte[] saveFailureScreenshot(WebDriver driver) {
+        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+    }
 
     @Override
     public void onStart(ISuite suite) {
@@ -47,7 +50,7 @@ public class AllureListener implements ITestListener, ISuiteListener {
 
         if(driver instanceof WebDriver) {
             System.out.println("Screen shot captured for the test case " + getTestMethodName(iTestResult));
-            saveFailureScreenshot(driver);
+            saveScreenshot(driver);
         }
     }
 
