@@ -47,7 +47,7 @@ public final class BrowserFactory {
             if(runmode.equalsIgnoreCase("remote")) {
                 options = new ChromeOptions();
                 options.setCapability("browserName", "chrome");
-                driver = new RemoteWebDriver(new URL("http://172.25.176.1/:4444/wd/hub"), options);
+                driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);
 
             } else {
                driver = new ChromeDriver();

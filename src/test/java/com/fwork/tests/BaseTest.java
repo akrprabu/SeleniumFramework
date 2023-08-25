@@ -9,6 +9,7 @@ import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
@@ -33,6 +34,7 @@ public class BaseTest {
             try {
                 Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"cd C:\\Users\\akrpr\\Docker Workspace && docker-compose up -d --scale chrome=4 --scale firefox=4\"");
                 //Runtime.getRuntime().exec("cmd /c start cmd.exe /K \"cd C:\\Users\\akrpr\\Docker Workspace && docker-compose up -d docker-compose.yml up --scale chrome=4\"");
+                Uninterruptibles.sleepUninterruptibly(Duration.ofSeconds(10));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
