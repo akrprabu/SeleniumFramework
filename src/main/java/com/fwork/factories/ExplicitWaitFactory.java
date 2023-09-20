@@ -4,6 +4,7 @@ import com.fwork.driver.DriverManager;
 import com.fwork.enums.WaitStrategy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -24,7 +25,16 @@ public class ExplicitWaitFactory {
                     .until(ExpectedConditions.visibilityOfElementLocated(by));
         } else if (waitStrategy == WaitStrategy.NONE) {
             element = DriverManager.getDriver().findElement(by);
+        //Handle stale element reference error using lambda explicit wait
+        } else if (waitStrategy == WaitStrategy.HANDLESTALEELEMENT) {
+            element = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(10))
+                    .until(d -> {
+                        System.out.println("Searching for the element");
+                        d.navigate().refresh();
+                        return d.findElement(by);
+                    });
     }
+
 
     return element;
 

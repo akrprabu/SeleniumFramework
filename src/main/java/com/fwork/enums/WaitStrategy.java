@@ -4,5 +4,6 @@ public enum WaitStrategy {
     CLICKABLE,
     PRESENCE,
     VISIBLE,
-    NONE
+    NONE,
+    HANDLESTALEELEMENT
 }

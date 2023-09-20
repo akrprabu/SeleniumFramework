@@ -59,7 +59,7 @@ public class BaseTest {
     @AfterMethod
     protected void tearDown() {
         Uninterruptibles.sleepUninterruptibly(5, TimeUnit.SECONDS);
-        Driver.quitDriver();
+        //Driver.quitDriver();
 
 
     }
