@@ -142,4 +142,10 @@ public class OMayoTest extends BaseTest {
 
                 softly.assertAll();
     }
+
+    public void testMethod() {
+
+        System.out.println("Print");
+
+    }
 }
