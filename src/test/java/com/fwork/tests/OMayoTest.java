@@ -146,6 +146,6 @@ public class OMayoTest extends BaseTest {
     public void testMethod() {
 
         System.out.println("Print");
-
+        System.out.println("Print3");
     }
 }
