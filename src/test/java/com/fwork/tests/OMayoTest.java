@@ -3,12 +3,9 @@ package com.fwork.tests;
 import com.fwork.driver.DriverManager;
 import com.google.common.util.concurrent.Uninterruptibles;
 import org.assertj.core.api.SoftAssertions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -147,5 +144,23 @@ public class OMayoTest extends BaseTest {
 
         System.out.println("Print");
         System.out.println("Print3");
+    }
+
+    //Method as per JC
+    public static boolean waitForElementToBeClickable(By by) {
+        try {
+            Wait wait = new FluentWait<>(DriverManager.getDriver()).withTimeout(Duration.ofSeconds(10))
+                    .ignoring(NoSuchElementException.class)
+                    .ignoring(StaleElementReferenceException.class);
+            wait.until(ExpectedConditions.elementToBeClickable(DriverManager.getDriver().findElement(by)));
+            return true;
+        } catch (TimeoutException t) {
+            //setLastExceptionMessage(t.getMessage()) -> This is as per JC
+            t.getMessage();
+            return false;
+        } catch (Exception e) {
+            e.getMessage();
+            return false;
+        }
     }
 }

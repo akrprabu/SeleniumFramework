@@ -108,6 +108,7 @@ public class ParasoftTest extends BaseTest{
     public void selectDropDownValue(String value) {
         WebElement element = DriverManager.getDriver().findElement(selectDrop);
         Select select = new Select(element);
+
         List<WebElement> listValues = select.getOptions();
         for(WebElement w:listValues) {
             if(w.getText().equalsIgnoreCase(value)) {
